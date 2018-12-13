@@ -13,9 +13,14 @@ def main():
 @app.route('/process_inputs', methods=['POST'])
 def process_inputs():
     name = request.form.get('input_name', '')
-    dropdown = request.form.get('input_dropdown', '')
+    role = request.form.get('input_role', '')
     select = request.form.get('input_select', '')
     freeform = request.form.get('input_freeform', '')
-    if name is(""):
-        render_template("main_page.html", input_data=dropdown,
-                           output="So why didn't you put a name huh? %s." % name)
+    if name is "":
+        return render_template("main_page.html", input_data=role,
+                           output="We would like to know your name%s." % name)
+    return render_template("main_page.html",input_data=role,
+                            name = name,
+                            role = role)
+
+
